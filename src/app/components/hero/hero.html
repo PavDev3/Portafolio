@@ -1,0 +1,24 @@
+<section class="hero">
+  <div class="boot" aria-hidden="true">
+    @for (line of bootLines; track line.text; let i = $index) {
+      @if (i < visibleBootLines()) {
+        <div class="boot-line">
+          @if (line.prompt) {
+            <span class="prompt-char">$ </span>
+          }
+          <span>{{ line.text }}</span>
+          @if (line.status === 'ok') {
+            <span class="ok"> [ok] frontend engineer / angular</span>
+          }
+        </div>
+      }
+    }
+  </div>
+
+  <h1 [class.revealed]="bootDone()">Pablo Núñez<span class="cursor" aria-hidden="true"></span></h1>
+
+  <p class="role" [class.revealed]="bootDone()">
+    <span class="k">rol:</span> Desarrollador Angular en Metadev — diseño sistemas, no solo
+    interfaces.
+  </p>
+</section>
