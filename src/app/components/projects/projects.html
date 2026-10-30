@@ -1,0 +1,25 @@
+<section>
+  <h2 class="cmd-line"><span class="prompt"></span>ls ~/projects --favorites</h2>
+
+  <ul class="grid">
+    @for (project of projects; track project.name) {
+      <li class="win">
+        <a class="win-link" [href]="project.url" target="_blank" rel="noopener noreferrer">
+          <div class="bar">
+            <span>{{ project.dir }}</span>
+            <span>{{ project.tag }}</span>
+          </div>
+          <div class="body">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}</p>
+            <p class="tags">
+              @for (t of project.stack; track t) {
+                <span>{{ t }}</span>
+              }
+            </p>
+          </div>
+        </a>
+      </li>
+    }
+  </ul>
+</section>
