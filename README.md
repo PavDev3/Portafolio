@@ -1,59 +1,61 @@
-# Portfolio
+# Portafolio — Pablo Núñez Fernández
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.5.
+Portfolio personal construido con Angular (standalone components, signals), con una
+identidad visual retro terminal / CRT: bisel de monitor, scanlines, secuencia de
+arranque tipo terminal y tarjetas de proyectos estilo `ls ~/projects`.
 
-## Development server
+Sitio 100% estático: no hay backend ni base de datos, todo el contenido vive en
+`src/app/data/*.data.ts`.
 
-To start a local development server, run:
+## Requisitos
 
-```bash
-ng serve
-```
+- Node.js ^22.22.3, ^24.15.0 o superior (requerido por Angular CLI 22).
+- npm.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Desarrollo
 
 ```bash
-ng generate component component-name
+npm install
+npm start      # equivalente a: ng serve
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+La app queda disponible en `http://localhost:4200/`.
+
+## Build de producción
 
 ```bash
-ng generate --help
+npm run build   # equivalente a: ng build
 ```
 
-## Building
+El resultado se genera en `dist/portfolio/`.
 
-To build the project run:
+## Tests
 
 ```bash
-ng build
+npm test
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Estructura
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+```
+src/app/
+  app.ts|html|css          Shell: bisel CRT, scanlines, barra de título y navegación
+  components/
+    hero/                  Secuencia de arranque + nombre + rol
+    about/                 Sobre mí + formación
+    skills/                Stack técnico agrupado por categoría
+    projects/               Proyectos destacados (ls ~/projects --favorites)
+    experience/             Timeline de experiencia (cat ~/.history)
+    contact/                Enlaces de contacto
+  data/
+    projects.data.ts
+    experience.data.ts
+    skills.data.ts
 ```
 
-## Running end-to-end tests
+## Notas de accesibilidad
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Respeta `prefers-reduced-motion`: desactiva animaciones y muestra el contenido
+  de inmediato.
+- Contraste verde fósforo / ámbar sobre fondo casi negro pensado para legibilidad.
+- Navegación por teclado con estados `:focus-visible` visibles.
