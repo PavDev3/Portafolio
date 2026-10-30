@@ -1,1 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #06100a;
+  --screen: #0b1710;
+  --amber: #ffb000;
+  --green: #5ddc6a;
+  --dim: #3f6b4a;
+  --text: #d7f5df;
+  --mono:
+    ui-monospace, 'SF Mono', 'Cascadia Mono', 'JetBrains Mono', Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  padding: 28px 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+.cmd-line {
+  color: var(--dim);
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.cmd-line .prompt {
+  color: var(--amber);
+}
+
+.cmd-line .prompt::before {
+  content: 'pablo@metadev:~$ ';
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 12px 8px;
+  }
+}
