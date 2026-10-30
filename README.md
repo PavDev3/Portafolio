@@ -53,6 +53,12 @@ src/app/
     skills.data.ts
 ```
 
+## Pendiente
+
+- **Automatizar build+publish de la imagen Docker via GitHub Actions.** Ahora mismo la imagen `ghcr.io/pavdev3/portfolio:latest` se construyo y se esta ejecutando **en local** en el servidor (sin pasar por el registro), porque el PAT fine-grained usado por el asistente no tiene el permiso `workflow` y GitHub rechaza cualquier push que cree o modifique archivos en `.github/workflows/`.
+  - Arreglo pendiente: anadir el permiso "Workflows" (read/write) al token en GitHub -> Settings -> Developer settings -> Fine-grained tokens, o crear/mover manualmente `.github/workflows/docker.yml` desde la web de GitHub (contenido ya preparado, ver historial del chat).
+  - Mientras tanto: cualquier cambio de codigo requiere reconstruir la imagen a mano (`docker build` + `docker compose up -d --build portfolio` en el servidor) - no hay auto-actualizacion via watchtower para este servicio.
+
 ## Notas de accesibilidad
 
 - Respeta `prefers-reduced-motion`: desactiva animaciones y muestra el contenido
