@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { EXPERIENCE, ExperienceEntry } from '../../data/experience.data';
+import { Component, computed, inject } from '@angular/core';
+import { EXPERIENCE } from '../../data/experience.data';
+import { LanguageService } from '../../i18n/language.service';
 
 @Component({
   imports: [],
@@ -8,5 +9,15 @@ import { EXPERIENCE, ExperienceEntry } from '../../data/experience.data';
   templateUrl: './experience.html',
 })
 export class Experience {
-  protected readonly entries: ExperienceEntry[] = EXPERIENCE;
+  private readonly language = inject(LanguageService);
+  protected readonly t = this.language.t;
+
+  protected readonly entries = computed(() =>
+    EXPERIENCE.map((entry) => ({
+      ...entry,
+      role: entry.role[this.language.lang()],
+      location: entry.location[this.language.lang()],
+      highlights: entry.highlights.map((h) => h[this.language.lang()]),
+    })),
+  );
 }

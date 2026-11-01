@@ -2,12 +2,12 @@
   <h2 class="cmd-line"><span class="prompt"></span>cat ~/.history | tail -n 3</h2>
 
   <ol class="timeline">
-    @for (entry of entries; track entry.company) {
+    @for (entry of entries(); track entry.company) {
       <li class="entry" [class.current]="entry.current">
         <div class="entry-head">
           <span class="period">{{ entry.period }}</span>
           @if (entry.current) {
-            <span class="badge">activo</span>
+            <span class="badge">{{ t().experience.activeBadge }}</span>
           }
         </div>
         <h3>{{ entry.role }} <span class="at">@</span> {{ entry.company }}</h3>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../i18n/language.service';
 
 @Component({
   imports: [],
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './contact.html',
 })
 export class Contact {
+  private readonly language = inject(LanguageService);
+  protected readonly t = this.language.t;
   protected readonly year = new Date().getFullYear();
 }

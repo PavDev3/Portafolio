@@ -1,13 +1,7 @@
 <section>
   <h2 class="cmd-line"><span class="prompt"></span>cat ~/about.md</h2>
 
-  <p class="intro">
-    Desde 06/2025 trabajo como Desarrollador Angular en <b>Metadev</b>, donde colaboro en
-    <b>Apricot</b>, un editor de modelado SysML v2 con asistente de IA para la ESA, y
-    <b>Structura</b>, un diseñador visual de modelos de dominio con generación de código
-    multi-stack Angular/.NET. Angular 22 + signals, testing E2E con Playwright, servidores MCP
-    propios y un flujo de trabajo asistido por Claude Code.
-  </p>
+  <p class="intro" [innerHTML]="t().about.intro"></p>
 
   <p class="meta">
     <span class="k">loc:</span> Cádiz, España &nbsp;·&nbsp; <span class="k">gh:</span>
@@ -22,7 +16,7 @@
 
   <h3 class="cmd-line secondary"><span class="prompt"></span>cat ~/.config/education</h3>
   <ul class="education-list">
-    @for (edu of education; track edu.title) {
+    @for (edu of education(); track edu.title) {
       <li>
         <span class="period">{{ edu.period }}</span>
         <span class="title">{{ edu.title }}</span>

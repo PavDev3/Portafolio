@@ -8,7 +8,7 @@
           }
           <span>{{ line.text }}</span>
           @if (line.status === 'ok') {
-            <span class="ok"> [ok] frontend engineer / angular</span>
+            <span class="ok"> [ok] {{ t().hero.statusSuffix }}</span>
           }
         </div>
       }
@@ -18,7 +18,6 @@
   <h1 [class.revealed]="bootDone()">Pablo Núñez<span class="cursor" aria-hidden="true"></span></h1>
 
   <p class="role" [class.revealed]="bootDone()">
-    <span class="k">rol:</span> Desarrollador Angular en Metadev — diseño sistemas, no solo
-    interfaces.
+    <span class="k">{{ t().hero.roleLabel }}</span> {{ t().hero.roleText }}
   </p>
 </section>

@@ -103,6 +103,39 @@
   color: var(--amber);
 }
 
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 14px;
+  flex-shrink: 0;
+}
+
+.lang-sep {
+  color: var(--dim);
+  opacity: 0.5;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--dim);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+
+.lang-btn:hover,
+.lang-btn:focus-visible {
+  color: var(--amber);
+}
+
+.lang-btn.active {
+  color: var(--green);
+  font-weight: bold;
+}
+
 main {
   position: relative;
   z-index: 4;
@@ -152,5 +185,9 @@ main {
 
   .titlebar .path {
     display: none;
+  }
+
+  .lang-toggle {
+    margin-left: 0;
   }
 }

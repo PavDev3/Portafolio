@@ -1,4 +1,4 @@
-<a class="skip-link" href="#main-content">Saltar al contenido</a>
+<a class="skip-link" href="#main-content">{{ t().skipLink }}</a>
 <div class="bezel">
   <div class="screen">
     <div class="titlebar">
@@ -6,13 +6,36 @@
       <span class="dot b" aria-hidden="true"></span>
       <span class="dot c" aria-hidden="true"></span>
       <span class="path">pnunez&#64;metadev &mdash; zsh &mdash; 80x24</span>
-      <nav aria-label="Navegación principal">
+      <nav [attr.aria-label]="t().nav.ariaLabel">
         <a href="#about">about</a>
         <a href="#experience">experience</a>
         <a href="#skills">skills</a>
         <a href="#projects">projects</a>
         <a href="#contact">contact</a>
       </nav>
+      <div class="lang-toggle" role="group" [attr.aria-label]="t().langToggle.groupAriaLabel">
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="lang() === 'es'"
+          [attr.aria-pressed]="lang() === 'es'"
+          [attr.aria-label]="t().langToggle.switchToEs"
+          (click)="setLang('es')"
+        >
+          ES
+        </button>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="lang() === 'en'"
+          [attr.aria-pressed]="lang() === 'en'"
+          [attr.aria-label]="t().langToggle.switchToEn"
+          (click)="setLang('en')"
+        >
+          EN
+        </button>
+      </div>
     </div>
 
     <main id="main-content">

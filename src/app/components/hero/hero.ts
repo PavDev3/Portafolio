@@ -1,4 +1,5 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { LanguageService } from '../../i18n/language.service';
 
 interface BootLine {
   prompt: boolean;
@@ -13,6 +14,9 @@ interface BootLine {
   templateUrl: './hero.html',
 })
 export class Hero implements OnInit {
+  private readonly language = inject(LanguageService);
+  protected readonly t = this.language.t;
+
   protected readonly bootLines: BootLine[] = [
     { prompt: true, text: 'whoami' },
     { prompt: false, text: 'pablo_nunez', status: 'ok' },

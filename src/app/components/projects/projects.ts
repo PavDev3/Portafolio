@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { PROJECTS, Project } from '../../data/projects.data';
+import { Component, computed, inject } from '@angular/core';
+import { PROJECTS } from '../../data/projects.data';
+import { LanguageService } from '../../i18n/language.service';
 
 @Component({
   imports: [],
@@ -8,5 +9,14 @@ import { PROJECTS, Project } from '../../data/projects.data';
   templateUrl: './projects.html',
 })
 export class Projects {
-  protected readonly projects: Project[] = PROJECTS;
+  private readonly language = inject(LanguageService);
+
+  protected readonly projects = computed(() =>
+    PROJECTS.map((project) => ({
+      ...project,
+      tag: project.tag[this.language.lang()],
+      description: project.description[this.language.lang()],
+      stack: project.stack.map((s) => s[this.language.lang()]),
+    })),
+  );
 }

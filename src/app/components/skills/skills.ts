@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { SKILLS, SkillGroup } from '../../data/skills.data';
+import { Component, computed, inject } from '@angular/core';
+import { SKILLS } from '../../data/skills.data';
+import { LanguageService } from '../../i18n/language.service';
 
 @Component({
   imports: [],
@@ -8,5 +9,12 @@ import { SKILLS, SkillGroup } from '../../data/skills.data';
   templateUrl: './skills.html',
 })
 export class Skills {
-  protected readonly skillGroups: SkillGroup[] = SKILLS;
+  private readonly language = inject(LanguageService);
+
+  protected readonly skillGroups = computed(() =>
+    SKILLS.map((group) => ({
+      category: group.category[this.language.lang()],
+      items: group.items.map((item) => item[this.language.lang()]),
+    })),
+  );
 }
